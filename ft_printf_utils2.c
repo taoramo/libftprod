@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	int_str_size_printf_us(unsigned int n, t_printf *tab)
 {

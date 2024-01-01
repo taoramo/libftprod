@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	update_tab(char *str, t_printf *tab, va_list arg_ptr)
 {
