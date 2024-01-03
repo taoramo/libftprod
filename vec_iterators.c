@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toramo <toramo.student@hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 10:49:27 by toramo            #+#    #+#             */
-/*   Updated: 2024/01/02 10:49:28 by toramo           ###   ########.fr       */
+/*   Created: 2024/01/02 10:42:38 by toramo            #+#    #+#             */
+/*   Updated: 2024/01/02 10:42:39 by toramo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
 void	vec_iter(t_vec *src, void (*f) (void *))
 {
@@ -26,6 +26,8 @@ void	vec_iter(t_vec *src, void (*f) (void *))
 
 int	vec_map(t_vec *dst, t_vec *src, void (*f) (void *))
 {
+	if (dst->memory)
+		vec_free(dst);
 	if (vec_new(dst, src->len, src->elem_size) <= 0)
 		return (-1);
 	vec_copy(dst, src);

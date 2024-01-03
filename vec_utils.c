@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toramo <toramo.student@hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 10:49:57 by toramo            #+#    #+#             */
-/*   Updated: 2024/01/02 10:49:57 by toramo           ###   ########.fr       */
+/*   Created: 2024/01/02 10:43:21 by toramo            #+#    #+#             */
+/*   Updated: 2024/01/02 10:43:22 by toramo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
 void	vec_free(t_vec *src)
 {
@@ -22,6 +22,8 @@ void	vec_free(t_vec *src)
 
 int	vec_from(t_vec *dst, void *src, size_t len, size_t elem_size)
 {
+	if (dst->memory)
+		vec_free(dst);
 	if (!dst || !src || elem_size == 0)
 		return (-1);
 	else if (vec_new(dst, len, elem_size) <= 0)
