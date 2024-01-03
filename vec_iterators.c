@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec.h"
+#include "libft.h"
 
 void	vec_iter(t_vec *src, void (*f) (void *))
 {
@@ -26,8 +26,6 @@ void	vec_iter(t_vec *src, void (*f) (void *))
 
 int	vec_map(t_vec *dst, t_vec *src, void (*f) (void *))
 {
-	if (dst->memory)
-		vec_free(dst);
 	if (vec_new(dst, src->len, src->elem_size) <= 0)
 		return (-1);
 	vec_copy(dst, src);
