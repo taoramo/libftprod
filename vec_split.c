@@ -12,24 +12,15 @@
 
 #include "libft.h"
 
-// static int	ft_strlen_member(const char *str, char sep)
-// {
-// 	int	n;
-//
-// 	n = 0;
-// 	if (str[0] != 0)
-// 	{
-// 		while (str[n] != 0 && str[n] != sep)
-// 		{
-// 			n++;
-// 		}
-// 	}
-// 	return (n);
-// }
+static void	vec_free_if_exists(void *arg)
+{
+	if (arg)
+		free(arg);
+}
 
 int	free_split_vec(t_vec *strs)
 {
-	vec_iter(strs, free);
+	vec_iter(strs, vec_free_if_exists);
 	vec_free(strs);
 	return (1);
 }
