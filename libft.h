@@ -162,4 +162,8 @@ void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memset(void *str, int c, size_t n);
 int			vec_strlcat(t_vec *dst, char *src, size_t l);
+int			free_split_vec(t_vec *strs);
+int			ft_strlen_member(const char *str, char sep);
+void		vec_print_elem_str(void *elem);
+int			vec_split(t_vec *dst, const char *s, char c);
 #endif
