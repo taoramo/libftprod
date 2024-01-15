@@ -33,14 +33,14 @@ int	vec_map(t_vec *dst, t_vec *src, void (*f) (void *))
 	return (1);
 }
 
-int	vec_filter(t_vec *dst, t_vec *src, bool (*f) (void *))
+int	vec_filter(t_vec *dst, t_vec *src, int (*f) (void *))
 {
 	size_t	i;
 
 	i = 0;
 	while (i < src->len)
 	{
-		if (f(vec_get(src, i)) == true)
+		if (f(vec_get(src, i)))
 			if (vec_push(dst, vec_get(src, i)) <= 0)
 				return (-1);
 		i++;
@@ -60,7 +60,7 @@ void	vec_reduce(void *acc, t_vec *src, void (*f) (void *, void *))
 	}
 }
 
-void	*vec_find(t_vec *src, bool (*f) (void *))
+void	*vec_find(t_vec *src, int (*f) (void *))
 {
 	void	*ptr;
 	size_t	i;

@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -151,9 +150,9 @@ int			vec_remove(t_vec *src, size_t index);
 int			vec_append(t_vec *dst, t_vec *src);
 int			vec_prepend(t_vec *dst, t_vec *src);
 void		vec_iter(t_vec *src, void (*f) (void *));
-void		*vec_find(t_vec *src, bool (*f) (void *));
+void		*vec_find(t_vec *src, int (*f) (void *));
 int			vec_map(t_vec *dst, t_vec *src, void (*f) (void *));
-int			vec_filter(t_vec *dst, t_vec *src, bool (*f) (void *));
+int			vec_filter(t_vec *dst, t_vec *src, int (*f) (void *));
 void		vec_reduce(void *acc, t_vec *src, void (*f) (void *, void *));
 void		vec_sort(t_vec *src, int (*f)(void *, void *));
 void		*ft_calloc(size_t count, size_t size);
