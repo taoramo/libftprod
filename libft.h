@@ -6,7 +6,7 @@
 /*   By: toramo <toramo.student@hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:26:41 by toramo            #+#    #+#             */
-/*   Updated: 2023/10/31 11:08:19 by toramo           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:29:44 by toramo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-typedef struct s_printf {
+typedef struct s_printf
+{
 	va_list	arg_ptr;
 	void	*arg;
 	int		alt;
