@@ -18,16 +18,15 @@ int	vec_insert(t_vec *dst, void *src, size_t index)
 		return (-1);
 	else if (index == dst->len)
 	{
-		vec_push(dst, src);
-		return (1);
+		return (vec_push(dst, src));
 	}
-	if (dst->alloc_size <= (dst->len + 1) * dst->elem_size)
+	if (dst->alloc_size <= (dst->len) * dst->elem_size)
 	{
 		if (vec_resize(dst, 2 * dst->alloc_size) <= 0)
 			return (-1);
 	}
-	ft_memmove(vec_get(dst, index + 1),
-		vec_get(dst, index),
+	ft_memmove(&dst->memory[(index + 1) * dst->elem_size],
+		&dst->memory[index * dst->elem_size],
 		(dst->len - index) * dst->elem_size);
 	ft_memcpy(vec_get(dst, index), src, dst->elem_size);
 	dst->len++;
@@ -45,7 +44,7 @@ int	vec_remove(t_vec *src, size_t index)
 		return (1);
 	}
 	ft_memmove(vec_get(src, index),
-		vec_get(src, index + 1),
+		&src->memory[src->elem_size * (index + 1)],
 		(src->len - index) * src->elem_size);
 	ft_bzero(vec_get(src, src->len - 1), src->elem_size);
 	src->len--;
