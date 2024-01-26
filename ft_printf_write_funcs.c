@@ -82,7 +82,7 @@ void	printf_write_int2(t_printf *tab, char pad, int padsize, int intlength)
 	if (tab -> precision > intlength)
 		write_pad_chars('0', ((tab -> precision) - intlength), tab);
 	if (!((long)tab -> arg == 0 && tab -> dot == 1 && tab -> precision == 0))
-		ft_putnbr_fd(ft_abs((long)tab -> arg), 1);
+		ft_putnbr_fd((long)tab -> arg, 1);
 	if (tab -> minus == 1 && padsize > 0)
 		write_pad_chars(' ', padsize, tab);
 }
