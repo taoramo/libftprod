@@ -32,11 +32,9 @@ void	vec_print_elem_str(void *elem)
 
 int	vec_split(t_vec *dst, const char *s, char c)
 {
-	int		i;
 	int		j;
 
 	j = 0;
-	i = 0;
 	vec_new(dst, 32, sizeof(char *));
 	if (dst == 0)
 		return (1);
@@ -53,7 +51,6 @@ int	vec_split(t_vec *dst, const char *s, char c)
 			ft_strlcpy((char *)vec_get(dst, dst->len - 1),
 				&s[j], (ft_strlen_member(&s[j], c) + 1));
 			j = j + ft_strlen_member(&s[j], c);
-			i++;
 		}
 	}
 	return (0);
