@@ -12,22 +12,25 @@
 
 #include "libft.h"
 
-static void	vec_free_if_exists(void *arg)
+static void    vec_free_if_exists(void *arg)
 {
-	if (arg)
-		free(arg);
+    char *str;
+
+    str = *(char **) arg;
+    if (str)
+        free(str);
 }
 
-int	free_split_vec(t_vec *strs)
+int    free_split_vec(t_vec *strs)
 {
-	vec_iter(strs, vec_free_if_exists);
-	vec_free(strs);
-	return (1);
+    vec_iter(strs, vec_free_if_exists);
+    vec_free(strs);
+    return (1);
 }
 
-void	vec_print_elem_str(void *elem)
+void    vec_print_elem_str(void *elem)
 {
-	ft_printf("%s\n", (char *)elem);
+    ft_printf("%s\n", *(char **)elem);
 }
 
 int	vec_split(t_vec *dst, const char *s, char c)
