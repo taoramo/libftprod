@@ -12,30 +12,31 @@
 
 #include "libft.h"
 
-static void    vec_free_if_exists(void *arg)
+static void	vec_free_if_exists(void *arg)
 {
-    char *str;
+	char	*str;
 
-    str = *(char **) arg;
-    if (str)
-        free(str);
+	str = *(char **) arg;
+	if (str)
+		free(str);
 }
 
-int    free_split_vec(t_vec *strs)
+int	free_split_vec(t_vec *strs)
 {
-    vec_iter(strs, vec_free_if_exists);
-    vec_free(strs);
-    return (1);
+	vec_iter(strs, vec_free_if_exists);
+	vec_free(strs);
+	return (1);
 }
 
-void    vec_print_elem_str(void *elem)
+void	vec_print_elem_str(void *elem)
 {
-    ft_printf("%s\n", *(char **)elem);
+	ft_printf("%s\n", *(char **)elem);
 }
 
 int	vec_split(t_vec *dst, const char *s, char c)
 {
 	int		j;
+	char	*str;
 
 	j = 0;
 	vec_new(dst, 32, sizeof(char *));
@@ -47,12 +48,11 @@ int	vec_split(t_vec *dst, const char *s, char c)
 			j++;
 		else
 		{
-			vec_push(dst, malloc(sizeof(char)
-					* (ft_strlen_member(&s[j], c) + 1)));
-			if ((char *)vec_get(dst, dst->len - 1) == 0)
+			str = ft_calloc(1, ft_strlen_member(&s[j], c) + 1);
+			if (!str)
 				return (free_split_vec(dst));
-			ft_strlcpy((char *)vec_get(dst, dst->len - 1),
-				&s[j], (ft_strlen_member(&s[j], c) + 1));
+			ft_strlcpy(str, &s[j], (ft_strlen_member(&s[j], c) + 1));
+			vec_push(dst, str);
 			j = j + ft_strlen_member(&s[j], c);
 		}
 	}
