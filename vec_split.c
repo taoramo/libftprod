@@ -54,6 +54,7 @@ int	vec_split(t_vec *dst, const char *s, char c)
 			ft_strlcpy(str, &s[j], (ft_strlen_member(&s[j], c) + 1));
 			vec_push(dst, str);
 			j = j + ft_strlen_member(&s[j], c);
+			free(str);
 		}
 	}
 	return (0);
