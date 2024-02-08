@@ -41,7 +41,7 @@ void	printf_write_int_us(t_printf *tab)
 	int		padsize;
 	int		intlength;
 
-	intlength = int_str_size_printf_us((unsigned int)tab -> arg, tab);
+	intlength = int_str_size_printf_us((unsigned long int)tab -> arg, tab);
 	pad = 32;
 	if (tab -> zero == 1 && tab -> precision == 0)
 		pad = '0';
@@ -54,8 +54,8 @@ void	printf_write_int_us(t_printf *tab)
 	if (tab -> precision > intlength)
 		write_pad_chars('0', ((tab -> precision) - intlength), tab);
 	if (!(tab -> dot == 1 && tab -> precision == 0
-			&& (unsigned int)tab -> arg == 0))
-		ft_putnbr_fd_us((unsigned int)tab -> arg, 1);
+			&& (unsigned long int)tab -> arg == 0))
+		ft_putnbr_fd_us((unsigned long int)tab -> arg, 1);
 	tab -> written += intlength;
 	if (tab -> minus == 1 && padsize > 0)
 		write_pad_chars(' ', padsize, tab);
@@ -68,7 +68,7 @@ void	printf_write_hex(t_printf *tab)
 	int				padsize;
 	char			pad;
 
-	i = (unsigned int)tab -> arg;
+	i = (unsigned long int)tab -> arg;
 	str = ft_calloc(64, sizeof(char));
 	if (!str)
 		return ;
@@ -86,9 +86,9 @@ void	printf_write_hex(t_printf *tab)
 
 void	printf_write_hex2(t_printf *tab, char *str, int padsize, char pad)
 {
-	if (tab -> alt && (unsigned int)tab -> arg != 0 && tab -> type == 'x')
+	if (tab -> alt && (unsigned long int)tab -> arg != 0 && tab -> type == 'x')
 		tab -> written += write(1, "0x", 2);
-	if (tab -> alt && (unsigned int)tab -> arg != 0 && tab -> type == 'X')
+	if (tab -> alt && (unsigned long int)tab -> arg != 0 && tab -> type == 'X')
 		tab -> written += write(1, "0X", 2);
 	if (tab -> minus == 0 && padsize > 0 && pad == '0')
 		write_pad_chars(pad, padsize, tab);

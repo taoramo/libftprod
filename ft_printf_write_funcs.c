@@ -50,7 +50,7 @@ void	printf_write_int(t_printf *tab)
 	int		padsize;
 	int		intlength;
 
-	intlength = int_str_size_printf((int)tab -> arg, tab);
+	intlength = int_str_size_printf((long)tab -> arg, tab);
 	pad = 32;
 	if (tab -> zero == 1 && tab -> dot == 0)
 		pad = '0';
@@ -58,11 +58,11 @@ void	printf_write_int(t_printf *tab)
 		padsize = tab -> width - intlength;
 	else
 		padsize = tab -> width - tab -> precision;
-	if (tab -> dot == 1 && tab -> precision == 0 && (int)tab -> arg == 0)
+	if (tab -> dot == 1 && tab -> precision == 0 && (long)tab -> arg == 0)
 		padsize++;
-	if ((int)tab -> arg < 0 || ((int)tab -> arg >= 0 && tab -> plus))
+	if ((long)tab -> arg < 0 || ((long)tab -> arg >= 0 && tab -> plus))
 		padsize--;
-	if (tab -> space == 1 && (int)tab -> arg >= 0)
+	if (tab -> space == 1 && (long)tab -> arg >= 0)
 		padsize--;
 	if (tab -> minus == 0 && padsize > 0 && pad == ' ')
 		write_pad_chars(pad, padsize, tab);
@@ -71,18 +71,18 @@ void	printf_write_int(t_printf *tab)
 
 void	printf_write_int2(t_printf *tab, char pad, int padsize, int intlength)
 {
-	if (tab -> space == 1 && (int)tab -> arg >= 0)
+	if (tab -> space == 1 && (long)tab -> arg >= 0)
 		tab -> written += write(1, " ", 1);
-	if ((int)tab -> arg >= 0 && tab -> plus)
+	if ((long)tab -> arg >= 0 && tab -> plus)
 		tab -> written += write(1, "+", 1);
-	if ((int)tab -> arg < 0 && (int)tab -> arg > -2147483648)
+	if ((long)tab -> arg < 0 && (long)tab -> arg > -2147483648)
 		tab -> written += write(1, "-", 1);
 	if (tab -> minus == 0 && padsize > 0 && pad == '0')
 		write_pad_chars(pad, padsize, tab);
 	if (tab -> precision > intlength)
 		write_pad_chars('0', ((tab -> precision) - intlength), tab);
-	if (!((int)tab -> arg == 0 && tab -> dot == 1 && tab -> precision == 0))
-		ft_putnbr_fd(ft_abs((int)tab -> arg), 1);
+	if (!((long)tab -> arg == 0 && tab -> dot == 1 && tab -> precision == 0))
+		ft_putnbr_fd(ft_abs((long)tab -> arg), 1);
 	if (tab -> minus == 1 && padsize > 0)
 		write_pad_chars(' ', padsize, tab);
 }
