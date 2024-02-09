@@ -40,7 +40,7 @@ int	vec_split(t_vec *dst, const char *s, char c)
 
 	j = 0;
 	if (dst == 0)
-		return (1);
+		return (-1);
 	if (dst->elem_size != sizeof(char *))
 		return (-1);
 	while (s[j])
