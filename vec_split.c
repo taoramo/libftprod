@@ -39,9 +39,10 @@ int	vec_split(t_vec *dst, const char *s, char c)
 	char	*str;
 
 	j = 0;
-	vec_new(dst, 32, sizeof(char *));
 	if (dst == 0)
 		return (1);
+	if (dst->elem_size != sizeof(char *))
+		return (-1);
 	while (s[j])
 	{
 		if (s[j] == c)
@@ -54,7 +55,6 @@ int	vec_split(t_vec *dst, const char *s, char c)
 			ft_strlcpy(str, &s[j], (ft_strlen_member(&s[j], c) + 1));
 			vec_push(dst, str);
 			j = j + ft_strlen_member(&s[j], c);
-			free(str);
 		}
 	}
 	return (0);
