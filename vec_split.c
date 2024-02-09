@@ -49,11 +49,10 @@ int	vec_split(t_vec *dst, const char *s, char c)
 			j++;
 		else
 		{
-			str = ft_calloc(1, ft_strlen_member(&s[j], c) + 1);
+			str = ft_substr(s, j, ft_strlen_member(&s[j], c));
 			if (!str)
 				return (free_split_vec(dst));
-			ft_strlcpy(str, &s[j], (ft_strlen_member(&s[j], c) + 1));
-			vec_push(dst, str);
+			vec_push(dst, &str);
 			j = j + ft_strlen_member(&s[j], c);
 		}
 	}
