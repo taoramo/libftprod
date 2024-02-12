@@ -35,12 +35,12 @@ static void	memswap(unsigned char *a, unsigned char *b, size_t bytes)
 	}
 }
 
-static size_t	vec_partition(t_vec *src, size_t low,
-	size_t high, int (*f)(void *, void *))
+static size_t	vec_partition(t_vec *src, int low,
+	int high, int (*f)(void *, void *))
 {
 	void	*pivot;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	pivot = vec_get(src, high);
 	i = low - 1;
@@ -59,10 +59,10 @@ static size_t	vec_partition(t_vec *src, size_t low,
 	return (i);
 }
 
-static void	vec_quicksort(t_vec *src, size_t low,
-	size_t high, int (*f)(void *, void *))
+static void	vec_quicksort(t_vec *src, int low,
+	int high, int (*f)(void *, void *))
 {
-	size_t	p;
+	int	p;
 
 	if (low >= high || low < 0)
 		return ;
