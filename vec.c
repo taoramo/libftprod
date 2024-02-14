@@ -61,7 +61,8 @@ int	vec_push(t_vec *dst, void *src)
 	if (!dst || !src)
 		return (-1);
 	else if (!dst->memory)
-		vec_new(dst, 1, dst->elem_size);
+		if (vec_new(dst, 1, dst->elem_size) < 0)
+			return (-1);
 	if (dst->alloc_size < (dst->len + 1) * dst->elem_size)
 	{
 		if (vec_resize(dst, 2 * dst->alloc_size) <= 0)
