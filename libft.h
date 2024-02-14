@@ -167,4 +167,5 @@ int			free_split_vec(t_vec *strs);
 int			ft_strlen_member(const char *str, char sep);
 void		vec_print_elem_str(void *elem);
 int			vec_split(t_vec *dst, const char *s, char c);
+int			vec_dup(t_vec *dst, t_vec *src);
 #endif

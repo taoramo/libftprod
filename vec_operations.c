@@ -83,3 +83,15 @@ int	vec_prepend(t_vec *dst, t_vec *src)
 	dst->len += src->len;
 	return (dst->len);
 }
+
+int	vec_dup(t_vec *dst, t_vec *src)
+{
+	if (!src || !dst)
+		return (-1);
+	ft_memcpy(dst, src, sizeof(t_vec));
+	dst->memory = ft_calloc(dst->alloc_size, 1);
+	if (!dst->memory)
+		return (-1);
+	ft_memcpy(dst->memory, src->memory, src->alloc_size);
+	return (0);
+}
