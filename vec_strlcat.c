@@ -56,7 +56,8 @@ int	vec_strlcat(t_vec *dst, char *src, size_t l)
 	if (!dst)
 		return (-1);
 	if (!dst->memory)
-		vec_new(dst, l, 1);
+		if (vec_new(dst, l, 1) < 0)
+			return (-1);
 	if (dst->elem_size != 1)
 		return (-1);
 	if (l + dst->len < dst->alloc_size)

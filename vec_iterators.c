@@ -28,7 +28,8 @@ int	vec_map(t_vec *dst, t_vec *src, void (*f) (void *))
 {
 	if (vec_new(dst, src->len, src->elem_size) <= 0)
 		return (-1);
-	vec_copy(dst, src);
+	if (vec_copy(dst, src) < 0)
+		return (-1);
 	vec_iter(dst, f);
 	return (1);
 }

@@ -52,7 +52,8 @@ int	vec_split(t_vec *dst, const char *s, char c)
 			str = ft_substr(s, j, ft_strlen_member(&s[j], c));
 			if (!str)
 				return (free_split_vec(dst));
-			vec_push(dst, &str);
+			if (vec_push(dst, &str) < 0)
+				return (free_split_vec(dst));
 			j = j + ft_strlen_member(&s[j], c);
 		}
 	}
