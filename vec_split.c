@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   vec_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toramo <toramo.student@hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,10 @@ static void	vec_free_if_exists(void *arg)
 
 	str = *(char **) arg;
 	if (str)
+	{
 		free(str);
+		str = 0;
+	}
 }
 
 int	free_split_vec(t_vec *strs)
