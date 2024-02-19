@@ -45,7 +45,7 @@ int	vec_remove(t_vec *src, size_t index)
 	}
 	ft_memmove(vec_get(src, index),
 		&src->memory[src->elem_size * (index + 1)],
-		(src->len - index) * src->elem_size);
+		(src->len - index - 1) * src->elem_size);
 	ft_bzero(vec_get(src, src->len - 1), src->elem_size);
 	src->len--;
 	return (src->len);
